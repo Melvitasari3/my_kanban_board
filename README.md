@@ -59,7 +59,7 @@ Response : Status 201 \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/update-account \
 Method    : PUT \
 Headers : Authorization (Bearer Token string) \
-Parameter : JSON / form
+Request : JSON / form \
 &nbsp; {\
   &nbsp; &nbsp; &nbsp; "full_name" : "string",\
   &nbsp; &nbsp; &nbsp; "email" : "string",\
@@ -77,7 +77,11 @@ Response : Status 200 \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/register \
 Method    : DELETE \
 Headers : Authorization (Bearer Token string) \
-Parameter : - 
+Parameter : - \
+Response : Status 200 \
+&nbsp; {\
+  &nbsp; &nbsp; &nbsp; "message" : "Your account has been seccessfully deleted" \
+&nbsp; }
 
 
 ## Categories
@@ -86,44 +90,184 @@ Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/categories \
 Method    : POST \
 Headers : Authorization (Bearer Token string) \
 Parameter : -
+Request : JSON / form \
+&nbsp; { \
+  &nbsp; &nbsp; &nbsp; "type" : "string" \
+&nbsp; } \
+Response : Status 201 \
+&nbsp; { \
+  &nbsp; &nbsp; &nbsp; "id" : "integer" \
+  &nbsp; &nbsp; &nbsp; "type" : "string" \
+  &nbsp; &nbsp; &nbsp; "created_at" : "date" \
+&nbsp; }  
+
 * Get All Categories \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/categories \
 Method    : GET \
 Headers : Authorization (Bearer Token string) \
-Parameter : -
+Parameter : - \
+Response : Status 200 \
+[ \
+  &nbsp; { \
+    &nbsp; &nbsp; &nbsp; &nbsp; "id" : "integer", \
+    &nbsp; &nbsp; &nbsp; &nbsp; "type" : "string", \
+    &nbsp; &nbsp; &nbsp; &nbsp; "updated_at : "date", \
+    &nbsp; &nbsp; &nbsp; &nbsp; "created_at : "date", \
+    &nbsp; &nbsp; &nbsp; &nbsp; "Tasks":[ \
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; { \
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "id" : "integer", \
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "title" : "string", \
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "description" : "string", \
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "user_id" : "integer", \
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "category_id": "date", \
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "updated_at":"date" \
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }  \
+    &nbsp; &nbsp; &nbsp; &nbsp; ]  \
+  &nbsp; }  \
+]
+
 * Update Category by ID \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/categories/:categoryId \
 Method    : PATCH \
 Headers : Authorization (Bearer Token string) \
-Parameter : 
-> categoryId (integer)
+Parameter : categoryId (integer) \
+Request : JSON / form \
+&nbsp; { \
+  &nbsp; &nbsp; &nbsp; "type" : "string"  \
+&nbsp; } \
+Response : Status 200 \
+&nbsp; {  \
+  &nbsp; &nbsp; &nbsp; "id" : "integer", \
+  &nbsp; &nbsp; &nbsp; "type" : "string", \
+  &nbsp; &nbsp; &nbsp; "updated_at" : "date" \
+&nbsp; } 
+
 * Delete Category by ID \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/categories/:categoryId \
 Method    : DELETE \
 Headers : Authorization (Bearer Token string) \
-Parameter : 
-> categoryId (integer) \
+Parameter : categoryId (integer) \
+Request : - \
+Response : Status 200 \
+&nbsp; { \
+  &nbsp; &nbsp; &nbsp; "message" : "Category has been successfully deleted" \
+&nbsp; }
 
 ## Task
 * Create New Tasks \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/tasks \
 Method    : POST \
 Headers : Authorization (Bearer Token string) \
-Parameter : -
+Parameter : - \
+Request : JSON / form \
+&nbsp; { \
+  &nbsp; &nbsp; "title" : "string", \
+  &nbsp; &nbsp; "description" : "string", \
+  &nbsp; &nbsp; "category_id" : "integer" \
+&nbsp; } \
+Response : Status 201 \
+&nbsp; { \
+  &nbsp; &nbsp; "id" : "integer", \
+  &nbsp; &nbsp; "title" : "string", \
+  &nbsp; &nbsp; "status" : "boolean", \
+  &nbsp; &nbsp; "description" : "string", \
+  &nbsp; &nbsp; "user_id" : "integer", \
+  &nbsp; &nbsp; "category_id" : "integer", \
+  &nbsp; &nbsp; "created_at" : "date" \
+&nbsp; }
+
 * Get All Tasks \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/tasks \
 Method    : GET \
 Headers : Authorization (Bearer Token string) \
-Parameter : -
+Parameter : - \
+Request : - \
+Response : Status 200 \
+&nbsp; [ \
+  &nbsp; &nbsp; { \
+    &nbsp; &nbsp; &nbsp; "id" : "integer", \
+    &nbsp; &nbsp; &nbsp; "title" : "string", \
+    &nbsp; &nbsp; &nbsp; "status" : "boolean", \
+    &nbsp; &nbsp; &nbsp; "description" :  "string", \
+    &nbsp; &nbsp; &nbsp; "user_id" : "integer", \
+    &nbsp; &nbsp; &nbsp; "category_id" : "integer", \
+    &nbsp; &nbsp; &nbsp; "created_at" : "date", \
+    &nbsp; &nbsp; &nbsp; "User" : { \
+      &nbsp; &nbsp; &nbsp; &nbsp; "id" : "integer", \
+      &nbsp; &nbsp; &nbsp; &nbsp; "email" : "string", \
+      &nbsp; &nbsp; &nbsp; &nbsp; "full_name" : "string" \
+    &nbsp; &nbsp; &nbsp; } \
+  &nbsp; &nbsp; } \
+&nbsp; ] 
+
 * Update task by ID \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/tasks/:tasksId \
 Method    : PUT \
 Headers : Authorization (Bearer Token string) \
-Parameter : 
-> taskId (integer)
+Parameter : taskId (integer) \
+Request : JSON / form \
+&nbsp; { \
+  &nbsp; &nbsp; "title" : "string", \
+  &nbsp; &nbsp; "description" : "string" \
+&nbsp; }
+Response : Status 200 \
+&nbsp; { \
+  &nbsp; &nbsp; "id" : "integer", \
+  &nbsp; &nbsp; "title" : "string", \
+  &nbsp; &nbsp; "description" :  "string", \
+  &nbsp; &nbsp; "status" : "boolean", \
+  &nbsp; &nbsp; "user_id" : "integer", \
+  &nbsp; &nbsp; "category_id" : "integer", \
+  &nbsp; &nbsp; &nbsp; "updated_at" : "date" \
+&nbsp; }
+
+* Update task status by ID \
+Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/tasks/update-status/:taskId \
+Method    : PATCH \
+Headers : Authorization (Bearer Token string) \
+Parameter : taskId (integer) \
+Request : JSON /form \
+&nbsp; { \
+  &nbsp; &nbsp; "status" : "boolean" \
+&nbsp; } \
+Response : Status 200 \
+&nbsp; { \
+  &nbsp; &nbsp; "id" : "integer", \
+  &nbsp; &nbsp; "title" : "string", \
+  &nbsp; &nbsp; "description" :  "string", \
+  &nbsp; &nbsp; "status" : "boolean", \
+  &nbsp; &nbsp; "user_id" : "integer", \
+  &nbsp; &nbsp; "category_id" : "integer", \
+  &nbsp; &nbsp; "updated_at" : "date" \
+&nbsp; }
+
+* Update task category by ID \
+Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/tasks/update-category/:taskId \
+Method    : PATCH \
+Headers : Authorization (Bearer Token string) \
+Parameter : taskId (integer) \
+Request : JSON /form \
+&nbsp; { \
+  &nbsp; &nbsp; "category_id" : "integer" \
+&nbsp; } \
+Response : Status 200 \
+&nbsp; { \
+  &nbsp; &nbsp; "id" : "integer", \
+  &nbsp; &nbsp; "title" : "string", \
+  &nbsp; &nbsp; "description" :  "string", \
+  &nbsp; &nbsp; "status" : "boolean", \
+  &nbsp; &nbsp; "user_id" : "integer", \
+  &nbsp; &nbsp; "category_id" : "integer", \
+  &nbsp; &nbsp; "updated_at" : "date" \
+&nbsp; }
+
 * Delete Category by ID \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/tasks/:tasksId \
 Method    : DELETE \
 Headers : Authorization (Bearer Token string) \
-Parameter : 
-> taskId (integer) \
+Parameter : taskId (integer) \
+Request : - \
+Response : Status 200 \
+&nbsp; { \
+  &nbsp; &nbsp; "message" : "Task has been successfully deleted" \
+&nbsp; } 
