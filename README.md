@@ -31,16 +31,28 @@ Method    : POST \
 Parameter : JSON / form \
 {\
   &nbsp; "email"    : "string",\
-  "password" : "string"\
+  &nbsp; "password" : "string"\
 }\
-Output    : JSON\
+Output    : Status 200 \
 {\
-  "token" : "jwt string"\
+  &nbsp; "token" : "jwt string"\
 }
 * Register User \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/register \
 Method    : POST \
-Parameter : -
+Parameter : JSON / form \
+{\
+  &nbsp; "full_name" : "string",\
+  &nbsp; "email" : "string",\
+  &nbsp; "pasword" : "string"\
+}\
+Output : Status 201 \
+{\
+  &nbsp; "id" : "integer",\
+  &nbsp; "full_name" : "string",\
+  &nbsp; "email" : "string",\
+  &nbsp; "created_at" : "date"\
+}
 * Update Account
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/update-account \
 Method    : PUT \
