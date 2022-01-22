@@ -30,8 +30,8 @@ Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/login \
 Method    : POST \
 Parameter : JSON / form \
 {\
-&ensp"email"    : "string",\
-&ensp"password" : "string"\
+: "email"    : "string",\
+: "password" : "string"\
 }\
 Output    : JSON\
 {\
