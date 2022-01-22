@@ -30,13 +30,13 @@ Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/login \
 Method    : POST \
 Parameter : JSON / form \
 {\
-  "email"    : "string",\
-  "password" : "string"\
+  ;"email"    : "string",\
+  ;"password" : "string"\
 }\
 Output    : JSON\
 {\
-  "token" : "jwt string"\
-}\
+  ;"token" : "jwt string"\
+}
 * Register User \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/register \
 Method    : POST \
