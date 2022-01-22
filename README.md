@@ -33,10 +33,11 @@ Parameter : JSON / form \
   &nbsp; &nbsp; &nbsp; "email"    : "string",\
   &nbsp; &nbsp; &nbsp; "password" : "string"\
 &nbsp; }\
-Output    : Status 200 \
+Response    : Status 200 \
 &nbsp; {\
   &nbsp; &nbsp; &nbsp; "token" : "jwt string"\
 &nbsp; }
+
 * Register User \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/register \
 Method    : POST \
@@ -46,18 +47,32 @@ Parameter : JSON / form \
   &nbsp; &nbsp; &nbsp; "email" : "string",\
   &nbsp; &nbsp; &nbsp; "pasword" : "string"\
 &nbsp; }\
-Output : Status 201 \
-{\
-  &nbsp; "id" : "integer",\
-  &nbsp; "full_name" : "string",\
-  &nbsp; "email" : "string",\
-  &nbsp; "created_at" : "date"\
-}
+Response : Status 201 \
+&nbsp; {\
+  &nbsp; &nbsp; &nbsp; "id" : "integer",\
+  &nbsp; &nbsp; &nbsp; "full_name" : "string",\
+  &nbsp; &nbsp; &nbsp; "email" : "string",\
+  &nbsp; &nbsp; &nbsp; "created_at" : "date"\
+&nbsp; }
+
 * Update Account
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/update-account \
 Method    : PUT \
 Headers : Authorization (Bearer Token string) \
-Parameter : - 
+Parameter : JSON / form
+&nbsp; {\
+  &nbsp; &nbsp; &nbsp; "full_name" : "string",\
+  &nbsp; &nbsp; &nbsp; "email" : "string",\
+&nbsp; }\
+Response : Status 200 \
+&nbsp; {\
+  &nbsp; &nbsp; &nbsp; "id" : "integer",\
+  &nbsp; &nbsp; &nbsp; "full_name" : "string",\
+  &nbsp; &nbsp; &nbsp; "email" : "string",\
+  &nbsp; &nbsp; &nbsp; "updated_at" : "date"\
+&nbsp; }
+
+
 * Delete User \
 Alamat    : https://hacktiv8-kanban-board-emf.herokuapp.com/users/register \
 Method    : DELETE \
