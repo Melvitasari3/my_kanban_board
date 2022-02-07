@@ -19,9 +19,12 @@ Back End App to create and modify kanban board
 -	"golang.org/x/crypto/bcrypt"
 -	"github.com/dgrijalva/jwt-go"
 -	"github.com/asaskevich/govalidator"
--	
+
 # Heroku Link
 https://hacktiv8-kanban-board-emf.herokuapp.com/
+
+# Postman Link
+https://documenter.getpostman.com/view/18861248/UVeGs6U6
 
 # How to Use Application
 ## User
